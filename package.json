@@ -8,19 +8,28 @@
     "build": "npm run build:types && npm run build:js",
     "build:types": "tsc --emitDeclarationOnly",
     "build:js": "babel src --out-dir lib --extensions \".ts,.tsx\" --source-maps inline",
-    "start": "npm run bundle && node dist/app.bundle.js",
-    "bundle": "webpack"
-
+    "start": "babel-node -x \".tsx\" src/index.tsx",
+    "bundle": "webpack",
+    "transpile": "npx babel ./src/index.tsx -o ./dist/cli.js && node ./dist/cli"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.3",
     "@babel/core": "^7.10.3",
+    "@babel/node": "^7.10.3",
     "@babel/plugin-proposal-class-properties": "^7.10.1",
     "@babel/preset-env": "^7.10.3",
+    "@babel/preset-react": "^7.10.1",
     "@babel/preset-typescript": "^7.10.1",
     "babel-loader": "^8.1.0",
     "typescript": "^3.9.5",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.12"
+  },
+  "dependencies": {
+    "@types/react": "^16.9.41",
+    "@types/react-dom": "^16.9.8",
+    "ink": "^2.7.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   }
 }
